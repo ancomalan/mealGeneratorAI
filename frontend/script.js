@@ -1,6 +1,6 @@
 const input = document.getElementById("task"); //get input element and store in a variable
 const list = document.getElementById("list"); //get list element from html
-const ingredients = []; //array storing ingredients
+let ingredients = []; //array storing ingredients
 
 //function that collects ingredients and adds them to ingredients array
 function addTask() {
@@ -21,6 +21,7 @@ function addTask() {
 }
 
 function generateMeal() {
+  ingredients = []; //reset ingredients array everytime the user clicks generate
   //go through all list items in unordered list and add them to ingredients array
   const listItems = list.getElementsByTagName("li"); //get html collection of li elements
   for (let i = 0; i < listItems.length; i++) {
@@ -31,10 +32,19 @@ function generateMeal() {
   const data = {
     ingredients: ingredients,
   };
-  const jsonData = JSON.stringify(data); //convert data to json so we can send POST request 
+  const jsonData = JSON.stringify(data); //convert data to json so we can send POST request
   console.log(jsonData);
 
-  
-
-
+  //send post request to flask server with ingredient list
+  fetch("http://127.0.0.1:5000/generate-meal", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  })
+    //get json response object, convert it to javascript, then get actual data sent back from server
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
 }
