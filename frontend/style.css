@@ -1,0 +1,33 @@
+#background{
+    background: linear-gradient(rgb(202, 37, 37), rgb(60, 60, 201));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+} 
+
+#title{
+    font-family: "consolas", sans-serif;
+    font-size: 30px;
+    color: rgb(230, 222, 222)
+}
+#list {
+    border-style: outset;
+    border-width: 5px;
+    border-radius: 10px;
+    color: rgb(230, 222, 222);
+    font-family: "consolas", sans-serif;
+    font-size: 20px;
+    padding: 20px;
+    margin-top: 30px;
+}
+button{
+border-radius: 5px;
+}
+button:hover{
+    background-color: grey
+}
+button:active{
+    background-color: tomato
+}
+
+

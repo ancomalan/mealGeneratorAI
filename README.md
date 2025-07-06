@@ -1,1 +1,1 @@
-# todoProject
+This program takes ingredients inputted by the user and generates a meal using AI through a local LLM.
